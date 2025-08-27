@@ -39,7 +39,11 @@ import {
   TableRow
 } from '@/components/ui/table'
 import { useToast } from '@/hooks/use-toast'
-import { AdminService, type Subscription, mockUsers } from '@/lib/mock/admin-data'
+import {
+  AdminService,
+  type Subscription,
+  mockUsers
+} from '@/lib/mock/admin-data'
 
 function SubscriptionTableRow({
   subscription
