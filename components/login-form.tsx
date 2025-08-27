@@ -51,6 +51,8 @@ export function LoginForm({
     }
   }
 
+  // Google OAuth temporarily disabled
+  /*
   const handleSocialLogin = async () => {
     const supabase = createClient()
     setIsLoading(true)
@@ -72,6 +74,7 @@ export function LoginForm({
       setIsLoading(false)
     }
   }
+  */
 
   return (
     <div
@@ -88,7 +91,8 @@ export function LoginForm({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-4">
-            <Button
+            {/* Google Sign-In temporarily disabled */}
+            {/* <Button
               variant="outline"
               type="button"
               className="w-full"
@@ -105,7 +109,7 @@ export function LoginForm({
               <div className="relative flex justify-center text-xs uppercase">
                 <span className="bg-muted px-2 text-muted-foreground">Or</span>
               </div>
-            </div>
+            </div> */}
 
             <form onSubmit={handleLogin} className="flex flex-col gap-4">
               <div className="grid gap-2">
