@@ -1,228 +1,164 @@
-# Morphic
+# SearchAI
 
-An AI-powered search engine with a generative UI.
+A powerful AI-powered search engine with an intelligent generative UI.
 
-![capture](/public/screenshot-2025-05-04.png)
+![SearchAI Screenshot](/public/screenshot-2025-05-04.png)
 
-## 🗂️ Overview
+## Overview
 
-- 🛠 [Features](#-features)
-- 🧱 [Stack](#-stack)
-- 🚀 [Quickstart](#-quickstart)
-- 🌐 [Deploy](#-deploy)
-- 🔎 [Search Engine](#-search-engine)
-- 💙 [Sponsors](#-sponsors)
-- 👥 [Contributing](#-contributing)
-- 📄 [License](#-license)
+SearchAI combines advanced AI capabilities with a modern, intuitive interface to deliver intelligent search results and interactive responses.
 
-📝 Explore AI-generated documentation on [DeepWiki](https://deepwiki.com/miurla/morphic)
+## ✨ Key Features
 
-## 🛠 Features
+### 🧠 AI-Powered Search
 
-### Core Features
-
-- AI-powered search with GenerativeUI
 - Natural language question understanding
-- Multiple search providers support (Tavily, SearXNG, Exa)
-- Model selection from UI (switch between available AI models)
-  - Reasoning models with visible thought process
+- Intelligent response generation with interactive UI
+- Multiple AI model support with real-time switching
+- Reasoning models with visible thought processes
 
-### Authentication
+### 🔐 User Authentication
 
-- User authentication powered by [Supabase Auth](https://supabase.com/docs/guides/auth)
-- Supports Email/Password sign-up and sign-in
-- Supports Social Login with Google
+- Secure user authentication system
+- Email/Password registration and login
+- Google Social Login integration
 
-### Chat & History
+### 💬 Chat & History
 
-- Chat history functionality (Optional)
-- Share search results (Optional)
-- Redis support (Local/Upstash)
+- Persistent chat history
+- Shareable search results
+- Redis-powered session management
 
-### AI Providers
+### 🔍 Advanced Search
 
-The following AI providers are supported:
+- Multiple search provider integration (Tavily, SearXNG, Exa)
+- URL-specific search capabilities
+- Video search support
+- Customizable search depth and filtering
+- Safe search options with time range filtering
 
-- OpenAI (Default)
+### 🤖 AI Model Support
+
+- OpenAI (GPT-4, GPT-3.5)
 - Google Generative AI
 - Azure OpenAI
-- Anthropic
-- Ollama
+- Anthropic Claude
+- Ollama (Local models)
 - Groq
 - DeepSeek
 - Fireworks
 - xAI (Grok)
-- OpenAI Compatible
+- OpenAI Compatible APIs
 
-Models are configured in `public/config/models.json`. Each model requires its corresponding API key to be set in the environment variables. See [Configuration Guide](docs/CONFIGURATION.md) for details.
+## 🛠 Technology Stack
 
-### Search Capabilities
+### Frontend & Backend
 
-- URL-specific search
-- Video search support (Optional)
-- SearXNG integration with:
-  - Customizable search depth (basic/advanced)
-  - Configurable engines
-  - Adjustable results limit
-  - Safe search options
-  - Custom time range filtering
+- **Next.js** - Full-stack React framework with App Router
+- **TypeScript** - Type-safe development
+- **Vercel AI SDK** - Streaming and Generative UI components
 
-### Additional Features
+### Authentication & Database
 
-- Docker deployment ready
-- Browser search engine integration
+- **Supabase** - Authentication and backend services
 
-## 🧱 Stack
+### Search & AI
 
-### Core Framework
+- **OpenAI** - Primary AI provider
+- **Tavily AI** - Default search provider
+- **SearXNG** - Self-hosted search option
+- **Exa** - Neural search capabilities
 
-- [Next.js](https://nextjs.org/) - App Router, React Server Components
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Vercel AI SDK](https://sdk.vercel.ai/docs) - Text streaming / Generative UI
+### Storage & Caching
 
-### Authentication & Authorization (Updated Category)
+- **Upstash Redis** - Serverless Redis for production
+- **Redis** - Local development option
 
-- [Supabase](https://supabase.com/) - User authentication and backend services
+### UI & Design
 
-### AI & Search
+- **Tailwind CSS** - Modern utility-first styling
+- **shadcn/ui** - Beautiful component library
+- **Radix UI** - Accessible component primitives
+- **Lucide Icons** - Consistent icon system
 
-- [OpenAI](https://openai.com/) - Default AI provider (Optional: Google AI, Anthropic, Groq, Ollama, Azure OpenAI, DeepSeek, Fireworks)
-- [Tavily AI](https://tavily.com/) - Default search provider
-- Alternative providers:
-  - [SearXNG](https://docs.searxng.org/) - Self-hosted search
-  - [Exa](https://exa.ai/) - Neural search
+## 🚀 Getting Started
 
-### Data Storage
+### Prerequisites
 
-- [Upstash](https://upstash.com/) - Serverless Redis
-- [Redis](https://redis.io/) - Local Redis option
+- Node.js 18+ or Bun
+- OpenAI API key
+- Tavily API key (for search functionality)
 
-### UI & Styling
+### Installation
 
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components
-- [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible components
-- [Lucide Icons](https://lucide.dev/) - Beautiful & consistent icons
-
-## 🚀 Quickstart
-
-### 1. Fork and Clone repo
-
-Fork the repo to your Github account, then run the following command to clone the repo:
+1. **Clone the repository**
 
 ```bash
-git clone git@github.com:[YOUR_GITHUB_ACCOUNT]/morphic.git
+git clone <your-repo-url>
+cd ai_search_engine
 ```
 
-### 2. Install dependencies
+2. **Install dependencies**
 
 ```bash
-cd morphic
 bun install
+# or
+npm install
 ```
 
-### 3. Configure environment variables
+3. **Environment Setup**
 
 ```bash
 cp .env.local.example .env.local
 ```
 
-Fill in the required environment variables in `.env.local`:
+Configure your environment variables in `.env.local`:
 
 ```bash
-# Required for Core Functionality
-OPENAI_API_KEY=     # Get from https://platform.openai.com/api-keys
-TAVILY_API_KEY=     # Get from https://app.tavily.com/home
+# Required API Keys
+OPENAI_API_KEY=your_openai_api_key
+TAVILY_API_KEY=your_tavily_api_key
+
+# Optional: Additional AI providers
+GOOGLE_GENERATIVE_AI_API_KEY=
+ANTHROPIC_API_KEY=
+# ... see .env.local.example for all options
 ```
 
-For optional features configuration (Redis, SearXNG, etc.), see [CONFIGURATION.md](./docs/CONFIGURATION.md)
-
-### 4. Run app locally
-
-#### Using Bun
+4. **Run the application**
 
 ```bash
 bun dev
+# or
+npm run dev
 ```
 
-#### Using Docker
+Visit `http://localhost:3000` to start using SearchAI.
+
+### Docker Deployment
 
 ```bash
 docker compose up -d
 ```
 
-Visit http://localhost:3000 in your browser.
+## 🎯 Usage
 
-## 🌐 Deploy
+1. **Ask Questions**: Type natural language questions in the search box
+2. **Interactive Results**: Get AI-generated responses with interactive components
+3. **Model Selection**: Switch between different AI models from the UI
+4. **Chat History**: Access your previous searches and conversations
+5. **Share Results**: Share interesting search results with others
 
-Host your own live version of Morphic with Vercel, Cloudflare Pages, or Docker.
+## ⚙️ Configuration
 
-### Vercel
+For detailed configuration options including Redis setup, additional AI providers, and search customization, see the [Configuration Guide](docs/CONFIGURATION.md).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmiurla%2Fmorphic&env=OPENAI_API_KEY,TAVILY_API_KEY,UPSTASH_REDIS_REST_URL,UPSTASH_REDIS_REST_TOKEN)
+## 📝 Notes
 
-### Docker Prebuilt Image
+- This project uses `pnpm` as the package manager
+- Environment variables must be properly configured for full functionality
+- Some features require additional API keys and services
 
-Prebuilt Docker images are available on GitHub Container Registry:
+---
 
-```bash
-docker pull ghcr.io/miurla/morphic:latest
-```
-
-You can use it with docker-compose:
-
-```yaml
-services:
-  morphic:
-    image: ghcr.io/miurla/morphic:latest
-    env_file: .env.local
-    ports:
-      - '3000:3000'
-    volumes:
-      - ./models.json:/app/public/config/models.json # Optional: Override default model configuration
-```
-
-The default model configuration is located at `public/config/models.json`. For Docker deployment, you can create `models.json` alongside `.env.local` to override the default configuration.
-
-## 🔎 Search Engine
-
-### Setting up the Search Engine in Your Browser
-
-If you want to use Morphic as a search engine in your browser, follow these steps:
-
-1. Open your browser settings.
-2. Navigate to the search engine settings section.
-3. Select "Manage search engines and site search".
-4. Under "Site search", click on "Add".
-5. Fill in the fields as follows:
-   - **Search engine**: Morphic
-   - **Shortcut**: morphic
-   - **URL with %s in place of query**: `https://morphic.sh/search?q=%s`
-6. Click "Add" to save the new search engine.
-7. Find "Morphic" in the list of site search, click on the three dots next to it, and select "Make default".
-
-This will allow you to use Morphic as your default search engine in the browser.
-
-## 💙 Sponsors
-
-This project is proudly supported by:
-
-<a href="https://vercel.com/oss">
-  <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge.svg" />
-</a>
-
-## 👥 Contributing
-
-We welcome contributions to Morphic! Whether it's bug reports, feature requests, or pull requests, all contributions are appreciated.
-
-Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
-
-- How to submit issues
-- How to submit pull requests
-- Commit message conventions
-- Development setup
-
-## 📄 License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-# SearchAI
+_SearchAI - Intelligent search powered by AI_
